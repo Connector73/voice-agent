@@ -782,10 +782,18 @@ lex.lua is simple BOT script to working with Lex engine.
 
 [TBD]
 
+## Javasript support
+
+Javascript example is located in scripts/lex.js.
+More information about Javascript API with FreeSWITCH is here: https://freeswitch.org/confluence/display/FREESWITCH/JavaScript+API+Reference
+
 ## What next?
 
-Modify lex.lua to support store results in the external databases.
-Short example:
+Lua API reference is here: https://freeswitch.org/confluence/display/FREESWITCH/Lua+API+Reference
+
+Now, we are ready to modify lex.lua to support store results in the external databases.
+
+Short example how to work with databases in lua:
 
 ~~~
 local dbh = freeswitch.Dbh("odbc://my_db:uname:passwd") -- connect to ODBC database 
@@ -811,5 +819,5 @@ dbh:release() -- optional
 
 More details is here: https://freeswitch.org/confluence/display/FREESWITCH/Lua+with+Database
 
-# Well done!
+## Well done!
 
