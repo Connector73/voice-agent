@@ -7,9 +7,11 @@ Simple MRCP based voice agent with support for BOTs
 
      ^
      |
+     v
 [ Lua / Javascript ]
 
      ^
      |
+     v
 [ BOT script ] <--> [ External db/web services ]
 
