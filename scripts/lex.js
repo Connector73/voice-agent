@@ -3,7 +3,7 @@
 var profile = "unimrcp:uni2";
 
 // Compose initial prompt command
-var promptCmd = "say: Welcome to Amazon Lex. How can I help you?";
+var promptCmd = "say: Welcome to Connector73 Booking Service. How can I help you?";
 
 // Compose recognition command
 var recogCmd = " detect:" + profile + " {start-input-timers=false,define-grammar=false,no-input-timeout=10000}builtin:speech/transcribe";
