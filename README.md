@@ -8,7 +8,7 @@ Simple MRCP based voice agent with support for BOTs
      ^.                                       ^
      |                                        |
      v                                        v
-[ Lua / Javascript engine ]          [ FaceBook / Slack ]
+[ Lua / Javascript engine ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ FaceBook / Slack ]
 
      ^
      |
