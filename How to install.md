@@ -694,4 +694,121 @@ Check for the NLSML results to be returned as expected.
 Visually inspect the log output for any possible warnings or errors.
  
 Note that utterances are stored in the var directory, if the corresponding parameter is enabled in the configuration file umslex.xml and/or requested by the client.
+
+## Configuring Unimrcp to support BOTS
+
+Full Unimrcp server configuration located in unimrcp/conf. You can use it to update the configuration on the server.
  
+## Configuring FreeSwitch
+
+Full FreeSWITCH configuration is located in freeswitch directory. You can use it to update the configuration on the server.
+
+### Manually Update
+
+#### Add Zultuys MXvirtual or any other Voip PBX as a gateway
+
+Create config file /etc/freeswitch/sip_profiles/external/example.xml:
+
+~~~
+<include>
+  <gateway name="mxvirtual">
+    <param name="username" value="test"/>
+    <param name="password" value="1234"/>
+    <param name="proxy" value="52.169.137.203"/>
+    <param name="caller-id-in-from" value="true"/> <!--Most gateways seem to want this-->
+    <param name="register" value="false"/>
+    <param name="context" value="public"/>
+    <param name="from-domain" value="52.169.137.203"/>
+  </gateway>
+</include>
+~~~
+
+Address 52.169.137.203 must be replaced with IP address of your voip PBX (SIP server).
+
+#### External number and test speech syntesizer
+
+Cereate config file /etc/freeswitch/dialplan/public/mx_porivder.xml:
+
+~~~
+<extension name="mxvirtual">
+ <condition field="destination_number" expression="^3728803046">
+   <action application="answer"/>
+   <action application="sleep" data="500"/>
+   <action application="set" data="tts_engine=unimrcp:uni2"/>
+   <action application="set" data="tts_voice=Salli"/>
+   <action application="speak" data="This is Polly, I am so busy now. Please call me back later. Have a good day"/>
+   <action application="sleep" data="2000"/>
+ </condition>
+</extension>
+~~~
+
+External phone number is 3728803046.
+You are ready to make the test call.
+
+Add following text to enable redirection for calls from FreeSWITCH (BOTs) to internal extension on the voip PBX.
+
+~~~
+<extension name="mxvirtual_int">
+ <condition field="destination_number" expression="^9(1\d{2})$">
+   <action application="bridge" data="sofia/gateway/mxvirtual/$1"/>
+ </condition>
+</extension>
+~~~
+
+Replace configuration for mxvirtual to run the BOT script on incomming call.
+
+~~~
+<extension name="mxvirtual">
+ <condition field="destination_number" expression="^3728803046">
+   <action application="answer"/>
+   <action application="set" data="tts_engine=unimrcp:uni2"/>
+   <action application="set" data="tts_voice=Salli"/>
+   <!-- action application="javascript" data="lex.js"/ -->
+   <action application="lua" data="lex.lua"/>
+ </condition>
+</extension>
+~~~
+
+### Upload scripts to the server
+
+Simple Lex BOT configuration is located in LexBot directory. It can be imported to AWS. More details is here: https://docs.aws.amazon.com/lex/latest/dg/import-from-lex.html
+
+
+Basic scripts are located in scripts. Scripts must be uploaded to /usr/share/freeswitch/scripts on the server.
+xmlSimple.lua is simple XML parser to parse Lex responses
+lex.lua is simple BOT script to working with Lex engine.
+
+### Test configured server
+
+[TBD]
+
+## What next?
+
+Modify lex.lua to support store results in the external databases.
+Short example:
+
+~~~
+local dbh = freeswitch.Dbh("odbc://my_db:uname:passwd") -- connect to ODBC database 
+ 
+assert(dbh:connected()) -- exits the script if we didn't connect properly
+ 
+dbh:test_reactive("SELECT * FROM my_table",
+                  "DROP TABLE my_table",
+                  "CREATE TABLE my_table (id INTEGER(8), name VARCHAR(255))")
+ 
+dbh:query("INSERT INTO my_table VALUES(1, 'foo')") -- populate the table
+dbh:query("INSERT INTO my_table VALUES(2, 'bar')") -- with some test data
+ 
+dbh:query("SELECT id, name FROM my_table", function(row)
+  stream:write(string.format("%5s : %s\n", row.id, row.name))
+end)
+ 
+dbh:query("UPDATE my_table SET name = 'changed'")
+stream:write("Affected rows: " .. dbh:affected_rows() .. "\n")
+ 
+dbh:release() -- optional
+~~~
+
+More details is here: https://freeswitch.org/confluence/display/FREESWITCH/Lua+with+Database
+
+# Well done!
