@@ -5,10 +5,10 @@ Simple MRCP based voice agent with support for BOTs
 
 [FreeSWITCH] <--> [ umrcpserver ] <--> [AWS Lex/Polly] <--> [ Lex Speech Language Understanding (SLU) system ]
 
-     ^
-     |
-     v
-[ Lua / Javascript engine ]
+     ^.                                       ^
+     |                                        |
+     v                                        v
+[ Lua / Javascript engine ]          [ FaceBook / Slack ]
 
      ^
      |
