@@ -12,9 +12,11 @@ Amazon Lex enables any developer to build conversational chatbots quickly. With 
 ## Server architecture
 
 [ VoipPBX ] <--> [FreeSWITCH] <--> [ umrcpserver ] <--> [AWS Lex/Polly] <--> [ Lex Speech Language Understanding (SLU) system ]
+
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     ^                                        ^
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     |                                        |
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     v                                        v
+
 [ Lua / Javascript engine ]&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;[ Facebook Messenger / Slack ]
 
      ^
