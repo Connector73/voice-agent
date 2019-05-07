@@ -23,4 +23,6 @@ Amazon Lex enables any developer to build conversational chatbots quickly. With 
      v
 [ BOT script ] <--> [ External db/web services ]
 
+
+
 Preconfigured server will be available in the AWS Marketplace soon!
