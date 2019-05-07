@@ -1,7 +1,7 @@
 # voice-agent
 Simple MRCP based voice agent with support for BOTs
 
-##Basic architecture
+## Basic architecture
 
 [FreeSWITCH] <--> [ umrcpserver ] <--> [AWS Lex/Polly] <--> [ Lex bot ]
 
