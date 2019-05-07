@@ -3,12 +3,12 @@ Simple MRCP based voice agent with support for BOTs
 
 ## Basic architecture
 
-[FreeSWITCH] <--> [ umrcpserver ] <--> [AWS Lex/Polly] <--> [ Lex bot ]
+[FreeSWITCH] <--> [ umrcpserver ] <--> [AWS Lex/Polly] <--> [ Lex Speech Language Understanding (SLU) system ]
 
      ^
      |
      v
-[ Lua / Javascript ]
+[ Lua / Javascript engine ]
 
      ^
      |
