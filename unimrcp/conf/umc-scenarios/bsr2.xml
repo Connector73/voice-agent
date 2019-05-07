@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<umcscenario name="bsr2" class="DtmfRecognizer" profile="uni2">
+  <resource-discovery enable="0"/>
+  <recognize enable="1" content-type="text/uri-list" grammar="builtin:dtmf/digits?length=4" digits="1234"/>
+
+  <termination enable="1">
+    <capabilities>
+      <codec name="LPCM" rates="16000"/>
+    </capabilities>
+  </termination>
+</umcscenario>

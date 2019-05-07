@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *  Description: Configuration of the Microsoft Bing Speech Recognition (BingSR) plugin to the UniMRCP server (UMS)
+ *  Vendor: Universal Speech Solutions LLC
+ *  Author: arsen.chaloyan@unimrcp.org
+-->
+
+<!-- UMS BingSR Document
+   Attributes:
+   *  license-file
+      This parameter specifies the license file to use. File name may include patterns containing a '*' sign.
+      If multiple files match the pattern, the most recent one gets used.
+   *  subscription-key-file
+      This parameter specifies a path to the file containing a Microsoft API key to use. File name may include patterns containing a '*' sign.
+      If multiple files match the pattern, the most recent one gets used.
+   Elements:
+   *  license-server
+      This element specifies parameters of the license server. The use of license server is optional.
+   *  ws-streaming-recognition
+      This element specifies parameters of the streaming recognition employed via Microsoft WebSocket Speech protocol.
+   *  speech-contexts
+      This element contains a list of speech contexts.
+   *  speech-dtmf-input-detector
+      This element specifies parameters of the speech and DTMF input detector.
+   *  utterance-manager
+      This element specifies parameters of the utterance manager.
+   *  rdr-manager
+      This element specifies parameters of the Recognition Details Record (RDR) manager.
+   *  monitoring-agent
+      This element specifies parameters of the monitoring agent.
+-->
+<umsbingsr license-file="umsbingsr_*.lic" subscription-key-file="cognitive.subscription.key">
+
+   <!-- License Server Configuration
+   Attributes:
+   *  enable
+      This is a boolean parameter indicating whether the license server is enabled or disabled.
+      If the license server is enabled, the license-file attribute is not honored.
+   *  server-address
+      This parameter specifies the IP address or host name of the license server.
+   *  certificate-file
+      This parameter specifies the client certificate used to connect to the license server. File name may include patterns containing a '*' sign.
+      If multiple files match the pattern, the most recent one gets used.
+   *  ca-file
+      This parameter specifies the certificate authority used to validate the license server.
+   *  channel-count
+      This parameter specifies the exact number of channels to be checked out from the license server. If not specified, all the available channels are checked out.
+   Elements:
+   *  none
+   -->
+   <license-server
+      enable="false"
+      server-address="127.0.0.1"
+      certificate-file="unilic_client_*.crt"
+      ca-file="unilic_ca.crt"
+   />
+
+   <!-- Microsoft WebSocket Streaming Recognition Configuration
+   Attributes:
+   *  language
+      This parameter specifies the default language to use. Can be overridden by client.
+      See the supported languages: https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/supportedlanguages
+   *  max-alternatives
+      This parameter specifies the maximum number of speech recognition result alternatives to be returned. Can be overridden by client.
+   *  alternatives-below-threshold
+      This boolean parameter specifies whether to return speech recognition result alternatives with the confidence score below the confidence threshold.
+   *  confidence-format
+      This parameter specifies the format of the confidence score to be returned (use "auto" for a format based on protocol version, "mrcpv2" for a float value in the range of 0..1, "mrcpv1" for an integer value in the range of 0..100).
+   *  results-fomrat
+      This parameter specifies the format of results to be returned to the client (use "standard" for NLSML and "transparent" for Microsoft JSON).
+   *  start-of-input
+      This parameter specifies the source of start of input event sent to the client (use "service-originated" for service-originated startDetected event and "internal" for plugin-originated event).
+   *  skip-unsupported-grammars
+      This boolean parameter specifies whether to skip or raise an error while referencing a malformed or not supported grammar.
+   *  transcription-grammar
+      This parameter specifies the name of the built-in speech transcription grammar. The grammar can be referenced as builtin:speech/transcribe or builtin:grammar/transcribe,
+      where "transcribe" is the default value of this parameter.
+   *  auth-validation-period
+      This parameter specifies a period in seconds used to re-validate access token based on subscription key. The lifetime of retrieved access token is set to 10 min by Microsoft.
+   Elements:
+   *  none
+   -->
+   <ws-streaming-recognition
+      language="en-US"
+      max-alternatives="1"
+      alternatives-below-threshold="false"
+      confidence-format="auto"
+      results-format="standard"
+      start-of-input="service-originated"
+      skip-unsupported-grammars="true"
+      transcription-grammar="transcribe"
+      auth-validation-period="480"
+   />
+
+   <!-- Speech Contexts Definition
+   Attributes:
+   *  none
+   Elements:
+   *  speech-context
+      This element specifies a speech context. Zero, one or more speech-context elements can be specified.
+   -->
+   <speech-contexts>
+      <!-- Speech Context Definition
+      Attributes:
+      *  id
+         This parameter specifies a unique string identifier of speech context to be referenced by the client.
+      *  language
+         This parameter specifies the language of phrases defined in speech context. If not specified, defaults to the language used with RECOGNIZE.
+      *  speech-complete
+         This is a boolean parameter indicating whether to complete input as soon as an interim result matches one of the specified phrases.
+      *  scope
+         This parameter specifies the scope of the speech context, which can be set to "hint" or "strict".
+      *  enable
+         This is a boolean parameter indicating whether speech context is enabled or disabled.
+      Elements:
+      *  phrase
+         This element specifies a phrase in speech context. One or more phrase elements can be specified.
+      -->
+
+      <!--
+         This is a sample speech context used as a basic grammar.
+         The sample speech context is disabled by default and provided for demonstration purposes only.
+      -->
+      <speech-context id="boolean" language="en-US" speech-complete="true" scope="strict" enable="false">
+         <phrase tag="true">yes</phrase>
+         <phrase tag="true">sure</phrase>
+         <phrase tag="true">correct</phrase>
+         <phrase tag="false">no</phrase>
+         <phrase tag="false">not sure</phrase>
+         <phrase tag="false">incorrect</phrase>
+      </speech-context>
+   </speech-contexts>
+
+   <!-- Speech and DTMF Input Detector
+   Attributes:
+   *  vad-mode
+      This integer parameter specifies VAD operating mode. A higher mode is more aggressive and, as a result, is more restrictive in reporting speech.
+      The acceptable range is [0 .. 3].
+   *  speech-start-timeout
+      This timeout specifies how long to wait in transition mode before triggering a start of speech input event.
+      The recommended range is [10 ms .. 300 ms].
+   *  speech-complete-timeout
+      This timeout specifies how long to wait in transition mode before triggering an end of speech input event.
+      The complete timeout is used when there is an interim result available.
+      The recommended range is [300 ms .. 1500 ms].
+   *  speech-incomplete-timeout
+      This timeout specifies how long to wait in transition mode before triggering an end of speech input event. 
+      The incomplete timeout is used as long as there is no interim result available. Afterwards, the complete timeout is used.
+      The recommended range is [1000 ms .. 3000 ms].
+   *  noinput-timeout
+      This timeout specifies how long to wait before triggering a no-input event.
+      The recommended range is [3000 ms .. 10000 ms]. Can be overridden by client.
+   *  input-timeout
+      This timeout specifies how long to wait for input to complete.
+      The recommended range is [5000 ms .. unlimited]. Can be overridden by client.
+   *  dtmf-interdigit-timeout
+      This timeout specifies a DTMF inter-digit timeout.
+      The recommended range is [1000 ms .. 10000 ms]. Can be overridden by client.
+   *  dtmf-term-timeout
+      This timeout specifies a DTMF input termination timeout.
+      The recommended range is [1000 ms .. 10000 ms]. Can be overridden by client.
+   *  dtmf-term-char
+      This parameter specifies a DTMF input termination character.
+      The recommended value is ''. Can be overridden by client.
+   *  speech-leading-silence
+      This parameter specifies desired silence interval preceding spoken input.
+      The recommended range is [100 ms .. 500 ms].
+   *  speech-trailing-silence
+      This parameter specifies desired silence interval following spoken input.
+      The recommended range is [100 ms .. 500 ms].
+   *  speech-output-period
+      This parameter specifies an interval speech frames are written to the recognizer.
+      The recommended range is [50 ms .. 500 ms].
+   Elements:
+   *  none
+   -->
+   <speech-dtmf-input-detector
+      vad-mode="2"
+      speech-start-timeout="300"
+      speech-complete-timeout="1000"
+      speech-incomplete-timeout="3000"
+      noinput-timeout="5000"
+      input-timeout="10000"
+      dtmf-interdigit-timeout="5000"
+      dtmf-term-timeout="10000"
+      dtmf-term-char=""
+      speech-leading-silence="300"
+      speech-trailing-silence="300"
+      speech-output-period="200"
+   />
+
+   <!-- Utterance Manager
+   Attributes:
+   *  save-waveforms
+      This parameter specifies whether to save waveforms or not.
+   *  purge-existing
+      This parameter specifies whether to delete existing waveforms on start-up.
+   *  max-file-age
+      This parameter specifies a time interval in minutes after expiration of which a waveform is deleted. Set 0 for infinite.
+   *  max-file-count
+      This parameter specifies the max number of waveforms to store. If reached, the oldest waveform is deleted. Set 0 for infinite.
+   *  waveform-base-uri
+      This parameter specifies the base URI used to compose an absolute waveform URI.
+   *  waveform-folder
+      This parameter specifies a folder the waveforms are stored in. Defaults to ${UniMRCPInstallDir}/var.
+   Elements:
+   *  none
+   -->
+   <utterance-manager
+      save-waveforms="false"
+      purge-existing="false"
+      max-file-age="60"
+      max-file-count="100"
+      waveform-base-uri="http://localhost/utterances/"
+      waveform-folder=""
+   />
+
+   <!-- Recognition Details Record (RDR) Manager
+   Attributes:
+   *  save-records
+      This parameter specifies whether to save recognition details records or not.
+   *  purge-existing
+      This parameter specifies whether to delete existing records on start-up.
+   *  max-file-age
+      This parameter specifies a time interval in minutes after expiration of which a record is deleted. Set 0 for infinite.
+   *  max-file-count
+      This parameter specifies the max number of records to store. If reached, the oldest record is deleted. Set 0 for infinite.
+   *  record-folder
+      This parameter specifies a folder to store recognition details records in. Defaults to ${UniMRCPInstallDir}/var.
+   Elements:
+   *  none
+   -->
+   <rdr-manager
+      save-records="false"
+      purge-existing="false"
+      max-file-age="60"
+      max-file-count="100"
+      record-folder=""
+   />
+
+   <!-- Monitoring Agent
+   Attributes:
+   *  refresh-period
+      This parameter specifies a time interval in seconds used to periodically refresh usage details. See <usage-refresh-handler>.
+   Elements:
+   *  usage-change-handler
+   *  usage-refresh-handler
+   -->
+   <monitoring-agent refresh-period="60">
+      <!-- Handler of usage change event
+      Attributes:
+      *  none
+      Elements:
+      *  log-usage
+      *  update-usage
+      *  dump-channels
+      -->
+      <usage-change-handler>
+         <log-usage enable="true" priority="NOTICE"/>
+         <update-usage enable="false" status-file="umsbingsr-usage.status"/>
+         <dump-channels enable="false" status-file="umsbingsr-channels.status"/>
+      </usage-change-handler>
+
+      <!-- Handler of usage refresh timeout
+      Attributes:
+      *  none
+      Elements:
+      *  log-usage
+      *  update-usage
+      *  dump-channels
+      -->
+      <usage-refresh-handler>
+         <log-usage enable="false" priority="NOTICE"/>
+         <update-usage enable="false" status-file="umsbingsr-usage.status"/>
+         <dump-channels enable="false" status-file="umsbingsr-channels.status"/>
+      </usage-refresh-handler>
+   </monitoring-agent>
+
+</umsbingsr>

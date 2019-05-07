@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<umcscenario name="bss2" class="Synthesizer" profile="uni2">
+  <resource-discovery enable="0"/>
+  <speak enable="1" content-type="text/plain" content-location="speak.txt"/>
+
+  <termination enable="1">
+    <capabilities>
+      <codec name="LPCM" rates="8000 16000"/>
+    </capabilities>
+  </termination>
+</umcscenario>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<umcscenario name="lex1" class="Recognizer" profile="uni2">
+  <resource-discovery enable="0"/>
+  <define-grammar enable="0"/>
+  <recognize enable="1" content-type="text/uri-list" content-location="speechtranscribe.txt" audio-source="bookroom.pcm"/>
+
+  <termination enable="1">
+    <capabilities>
+      <codec name="LPCM" rates="8000 16000"/>
+      <!-- <codec name="PCMU" rates="8000 16000"/> -->
+    </capabilities>
+  </termination>
+</umcscenario>

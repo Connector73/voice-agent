@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *  Description: Supported Microsoft Bing Speech Voices
+ *  Vendor: Universal Speech Solutions LLC
+ *  Author: arsen.chaloyan@unimrcp.org
+-->
+
+<!-- UMS Bing Voices Document
+   Table of voices composed based on the supported locales and voice fonts provided at the following URI.
+   https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput#SupLocales
+-->
+<umsbingvoices>
+
+   <voice name="Hoda" gender="Female" language="ar-EG" service-name="Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)"/>
+   <voice name="Naayf" gender="Male" language="ar-EG" service-name="Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)"/>
+   <voice name="HerenaRUS" gender="Female" language="ca-ES" service-name="Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)"/>
+   <voice name="Jakub" gender="Male" language="cs-CZ" service-name="Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)"/>
+   <voice name="HelleRUS" gender="Female" language="da-DK" service-name="Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)"/>
+   <voice name="Michael" gender="Male" language="de-AT" service-name="Microsoft Server Speech Text to Speech Voice (de-AT, Michael)"/>
+   <voice name="Karsten" gender="Male" language="de-CH" service-name="Microsoft Server Speech Text to Speech Voice (de-CH, Karsten)"/>
+   <voice name="Hedda" gender="Female" language="de-DE" service-name="Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)"/>
+   <voice name="HeddaRUS" gender="Female" language="de-DE" service-name="Microsoft Server Speech Text to Speech Voice (de-DE, HeddaRUS)"/>
+   <voice name="Apollo" gender="Male" language="de-DE" service-name="Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)"/>
+   <voice name="Stefanos" gender="Male" language="el-GR" service-name="Microsoft Server Speech Text to Speech Voice (el-GR, Stefanos)"/>
+   <voice name="Catherine" gender="Female" language="en-AU" service-name="Microsoft Server Speech Text to Speech Voice (en-AU, Catherine)"/>
+   <voice name="HayleyRUS" gender="Female" language="en-AU" service-name="Microsoft Server Speech Text to Speech Voice (en-AU, HayleyRUS)"/>
+   <voice name="Linda" gender="Female" language="en-CA" service-name="Microsoft Server Speech Text to Speech Voice (en-CA, Linda)"/>
+   <voice name="HeatherRUS" gender="Female" language="en-CA" service-name="Microsoft Server Speech Text to Speech Voice (en-CA, HeatherRUS)"/>
+   <voice name="Susan" gender="Female" language="en-GB" service-name="Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)"/>
+   <voice name="HazelRUS" gender="Female" language="en-GB" service-name="Microsoft Server Speech Text to Speech Voice (en-GB, HazelRUS)"/>
+   <voice name="George" gender="Male" language="en-GB" service-name="Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)"/>
+   <voice name="Sean" gender="Male" language="en-IE" service-name="Microsoft Server Speech Text to Speech Voice (en-IE, Sean)"/>
+   <voice name="Heera" gender="Female" language="en-IE" service-name="Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)"/>
+   <voice name="PriyaRUS" gender="Female" language="en-IN" service-name="Microsoft Server Speech Text to Speech Voice (en-IN, PriyaRUS)"/>
+   <voice name="Ravi" gender="Male" language="en-IN" service-name="Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)"/>
+   <voice name="ZiraRUS" gender="Female" language="en-US" service-name="Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)"/>
+   <voice name="JessaRUS" gender="Female" language="en-US" service-name="Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)"/>
+   <voice name="BenjaminRUS" gender="Male" language="en-US" service-name="Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)"/>
+   <voice name="Laura" gender="Female" language="es-ES" service-name="Microsoft Server Speech Text to Speech Voice (es-ES, Laura, Apollo)"/>
+   <voice name="HelenaRUS" gender="Female" language="es-ES" service-name="Microsoft Server Speech Text to Speech Voice (es-ES, HelenaRUS)"/>
+   <voice name="Pablo" gender="Male" language="es-ES" service-name="Microsoft Server Speech Text to Speech Voice (es-ES, Pablo, Apollo)"/>
+   <voice name="HildaRUS" gender="Female" language="es-MX" service-name="Microsoft Server Speech Text to Speech Voice (es-MX, HildaRUS)"/>
+   <voice name="Raul" gender="Male" language="es-MX" service-name="Microsoft Server Speech Text to Speech Voice (es-MX, Raul, Apollo)"/>
+   <voice name="HeidiRUS" gender="Female" language="fi-FI" service-name="Microsoft Server Speech Text to Speech Voice (fi-FI, HeidiRUS)"/>
+   <voice name="Caroline" gender="Female" language="fr-CA" service-name="Microsoft Server Speech Text to Speech Voice (fr-CA, Caroline)"/>
+   <voice name="HarmonieRUS" gender="Female" language="fr-CA" service-name="Microsoft Server Speech Text to Speech Voice (fr-CA, HarmonieRUS)"/>
+   <voice name="Guillaume" gender="Male" language="fr-CH" service-name="Microsoft Server Speech Text to Speech Voice (fr-CH, Guillaume)"/>
+   <voice name="Julie" gender="Female" language="fr-CH" service-name="Microsoft Server Speech Text to Speech Voice (fr-FR, Julie, Apollo)"/>
+   <voice name="HortenseRUS" gender="Female" language="fr-FR" service-name="Microsoft Server Speech Text to Speech Voice (fr-FR, HortenseRUS)"/>
+   <voice name="Paul" gender="Male" language="fr-FR" service-name="Microsoft Server Speech Text to Speech Voice (fr-FR, Paul, Apollo)"/>
+   <voice name="Asaf" gender="Male" language="he-IL" service-name="Microsoft Server Speech Text to Speech Voice (he-IL, Asaf)"/>
+   <voice name="KalpanaApollo" gender="Female" language="hi-IN" service-name="Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana, Apollo)"/>
+   <voice name="Kalpana" gender="Female" language="hi-IN" service-name="Microsoft Server Speech Text to Speech Voice (hi-IN, Kalpana)"/>
+   <voice name="Hemant" gender="Male" language="hi-IN" service-name="Microsoft Server Speech Text to Speech Voice (hi-IN, Hemant)"/>
+   <voice name="Szabolcs" gender="Male" language="hu-HU" service-name="Microsoft Server Speech Text to Speech Voice (hu-HU, Szabolcs)"/>
+   <voice name="Andika" gender="Male" language="id-ID" service-name="Microsoft Server Speech Text to Speech Voice (id-ID, Andika)"/>
+   <voice name="Cosimo" gender="Male" language="it-IT" service-name="Microsoft Server Speech Text to Speech Voice (it-IT, Cosimo, Apollo)"/>
+   <voice name="Ayumi" gender="Female" language="ja-JP" service-name="Microsoft Server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)"/>
+   <voice name="Ichiro" gender="Male" language="ja-JP" service-name="Microsoft Server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)"/>
+   <voice name="HarukaRUS" gender="Female" language="ja-JP" service-name="Microsoft Server Speech Text to Speech Voice (ja-JP, HarukaRUS)"/>
+   <voice name="LuciaRUS" gender="Female" language="ja-JP" service-name="Microsoft Server Speech Text to Speech Voice (ja-JP, LuciaRUS)"/>
+   <voice name="EkaterinaRUS" gender="Male" language="ja-JP" service-name="Microsoft Server Speech Text to Speech Voice (ja-JP, EkaterinaRUS)"/>
+   <voice name="HeamiRUS" gender="Female" language="ko-KR" service-name="Microsoft Server Speech Text to Speech Voice (ko-KR, HeamiRUS)"/>
+   <voice name="HuldaRUS" gender="Female" language="nb-NO" service-name="Microsoft Server Speech Text to Speech Voice (nb-NO, HuldaRUS)"/>
+   <voice name="HannaRUS" gender="Female" language="nl-NL" service-name="Microsoft Server Speech Text to Speech Voice (nl-NL, HannaRUS)"/>
+   <voice name="PaulinaRUS" gender="Female" language="pl-PL" service-name="Microsoft Server Speech Text to Speech Voice (pl-PL, PaulinaRUS)"/>
+   <voice name="HeloisaRUS" gender="Female" language="pt-BR" service-name="Microsoft Server Speech Text to Speech Voice (pt-BR, HeloisaRUS)"/>
+   <voice name="Daniel" gender="Male" language="pt-BR" service-name="Microsoft Server Speech Text to Speech Voice (pt-BR, Daniel, Apollo)"/>
+   <voice name="HeliaRUS" gender="Female" language="pt-PT" service-name="Microsoft Server Speech Text to Speech Voice (pt-PT, HeliaRUS)"/>
+   <voice name="Andrei" gender="Male" language="ro-RO" service-name="Microsoft Server Speech Text to Speech Voice (ro-RO, Andrei)"/>
+   <voice name="Irina" gender="Female" language="ru-RU" service-name="Microsoft Server Speech Text to Speech Voice (ru-RU, Irina, Apollo)"/>
+   <voice name="Pavel" gender="Male" language="ru-RU" service-name="Microsoft Server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)"/>
+   <voice name="Filip" gender="Male" language="sk-SK" service-name="Microsoft Server Speech Text to Speech Voice (sk-SK, Filip)"/>
+   <voice name="HedvigRUS" gender="Female" language="sv-SE" service-name="Microsoft Server Speech Text to Speech Voice (sv-SE, HedvigRUS)"/>
+   <voice name="Pattara" gender="Male" language="th-TH" service-name="Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)"/>
+   <voice name="SedaRUS" gender="Female" language="tr-TR" service-name="Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)"/>
+   <voice name="HuihuiRUS" gender="Female" language="zh-CN" service-name="Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)"/>
+   <voice name="Yaoyao" gender="Female" language="zh-CN" service-name="Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)"/>
+   <voice name="Kangkang" gender="Male" language="zh-CN" service-name="Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)"/>
+   <voice name="Tracy" gender="Female" language="zh-HK" service-name="Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)"/>
+   <voice name="TracyRUS" gender="Female" language="zh-HK" service-name="Microsoft Server Speech Text to Speech Voice (zh-HK, TracyRUS)"/>
+   <voice name="Danny" gender="Male" language="zh-HK" service-name="Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)"/>
+   <voice name="Yating" gender="Female" language="zh-TW" service-name="Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)"/>
+   <voice name="HanHanRUS" gender="Female" language="zh-TW" service-name="Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)"/>
+   <voice name="Zhiwei" gender="Male" language="zh-TW" service-name="Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)"/>
+
+</umsbingvoices>

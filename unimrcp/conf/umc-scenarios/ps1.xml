@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<umcscenario name="ps1" class="Recognizer" profile="uni2">
+  <resource-discovery enable="0"/>
+  <define-grammar enable="1" content-type="application/x-jsgf" content-location="command.jsgf"/>
+  <recognize enable="1" audio-source="callsteve.pcm"/>
+
+  <termination enable="1">
+    <capabilities>
+      <codec name="LPCM" rates="8000 16000"/>
+      <!-- <codec name="PCMU" rates="8000 16000"/> -->
+    </capabilities>
+  </termination>
+</umcscenario>

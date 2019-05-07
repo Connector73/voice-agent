@@ -1,0 +1,28 @@
+<extension name="mxvirtual">
+ <condition field="destination_number" expression="^3728803046">
+   <action application="answer"/>
+   <action application="set" data="tts_engine=unimrcp:uni2"/>
+   <action application="set" data="tts_voice=Salli"/>
+   <!-- action application="javascript" data="lex.js"/ -->
+   <action application="lua" data="lex.lua"/>
+ </condition>
+</extension>
+
+<!--
+<extension name="mxvirtual">
+ <condition field="destination_number" expression="^3728803046">
+   <action application="answer"/>
+   <action application="sleep" data="500"/>
+   <action application="set" data="tts_engine=unimrcp:uni2"/>
+   <action application="set" data="tts_voice=Salli"/>
+   <action application="speak" data="This is Polly, I am so busy now. Please call me back later. Have a good day"/>
+   <action application="sleep" data="2000"/>
+ </condition>
+</extension>
+-->
+
+<extension name="mxvirtual_int">
+ <condition field="destination_number" expression="^9(1\d{2})$">
+   <action application="bridge" data="sofia/gateway/mxvirtual/$1"/>
+ </condition>
+</extension>

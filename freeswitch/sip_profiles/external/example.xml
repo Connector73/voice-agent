@@ -1,0 +1,11 @@
+<include>
+  <gateway name="mxvirtual">
+    <param name="username" value="test"/>
+    <param name="password" value="1234"/>
+    <param name="proxy" value="52.169.137.203"/>
+    <param name="caller-id-in-from" value="true"/> <!--Most gateways seem to want this-->
+    <param name="register" value="false"/>
+    <param name="context" value="public"/>
+    <param name="from-domain" value="52.169.137.203"/>
+  </gateway>
+</include>

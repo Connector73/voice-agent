@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *  Description: Configuration of the Amazon Polly Speech Synthesis plugin to the UniMRCP server (UMS)
+ *  Vendor: Universal Speech Solutions LLC
+ *  Author: arsen.chaloyan@unimrcp.org
+-->
+
+<!-- UMS Polly Document
+   Attributes:
+   *  license-file
+      This parameter specifies the license file to use. File name may include patterns containing a '*' sign.
+      If multiple files match the pattern, the most recent one gets used.
+   *  credentials-file
+      This parameter specifies a path to the file containing an AWS credentials to use. File name may include patterns containing a '*' sign.
+      If multiple files match the pattern, the most recent one gets used.
+   *  init-sdk
+      This parameter specifies whether to init AWS SDK upon loading of the plugin. 
+      Must be set to true by default. Set it to false, if another plugin using the same AWS SDK is loaded prior to this plugin.
+   *  shutdown-sdk
+      This parameter specifies whether to shut down AWS SDK upon unloading of the plugin. 
+      Must be set to true by default. Set it to false, if another plugin using the same AWS SDK is unloaded next to this plugin.
+   Elements:
+   *  license-server
+      This element specifies parameters of the license server. The use of license server is optional.
+   *  synth-settings
+      This element specifies synthesis parameters.
+   *  waveform-manager
+      This element specifies parameters of the waveform manager.
+   *  sdr-manager
+      This element specifies parameters of the Synthesis Details Record (RDR) manager.
+   *  monitoring-agent
+      This element specifies parameters of the monitoring agent.
+-->
+<umspolly license-file="umspolly_e720d21e-1094-40c8-a281-892472370778.lic" credentials-file="aws.credentials" init-sdk="true" shutdown-sdk="false">
+
+   <!-- License Server Configuration
+   Attributes:
+   *  enable
+      This is a boolean parameter indicating whether the license server is enabled or disabled.
+      If the license server is enabled, the license-file attribute is not honored.
+   *  server-address
+      This parameter specifies the IP address or host name of the license server.
+   *  certificate-file
+      This parameter specifies the client certificate used to connect to the license server. File name may include patterns containing a '*' sign.
+      If multiple files match the pattern, the most recent one gets used.
+   *  ca-file
+      This parameter specifies the certificate authority used to validate the license server.
+   Elements:
+   *  none
+   -->
+   <license-server
+      enable="false"
+      server-address="127.0.0.1"
+      certificate-file="unilic_client_*.crt"
+      ca-file="unilic_ca.crt"
+   />
+
+   <!-- Synthesis Settings
+   Attributes:
+   *  language
+      This parameter specifies the default language to use. Can be overridden by client.
+   *  bypass-ssml
+      This parameter specifies whether transparently bypass or parse received content in order to determine voice parameters set in SSML.
+   *  voice-name
+      This parameter specifies the default voice name. Can be overridden by client.
+   *  voice-gender
+      This parameter specifies the default voice gender. Can be overridden by client.
+   *  thread-pool-size
+      This parameter specifies the size of the executor thread pool provided by AWS SDK.
+   *  region
+      This parameter specifies the AWS region. For example: "us-west-2".
+      Available Polly regions: https://docs.aws.amazon.com/general/latest/gr/rande.html#polly_region
+   Elements:
+   *  none
+   -->
+   <synth-settings
+      language="en-US"
+      bypass-ssml="true"
+      voice-name=""
+      voice-gender=""
+      thread-pool-size="1"
+      region=""
+   />
+
+   <!-- Waveform Manager
+   Attributes:
+   *  save-waveforms
+      This parameter specifies whether to save waveforms or not.
+   *  purge-existing
+      This parameter specifies whether to delete existing waveforms on start-up.
+   *  max-file-age
+      This parameter specifies a time interval in minutes after expiration of which a waveform is deleted. Set 0 for infinite.
+   *  max-file-count
+      This parameter specifies the max number of waveforms to store. If reached, the oldest waveform is deleted. Set 0 for infinite.
+   *  waveform-folder
+      This parameter specifies a folder the waveforms are stored in. Defaults to ${UniMRCPInstallDir}/var.
+   Elements:
+   *  none
+   -->
+   <waveform-manager
+      save-waveforms="false"
+      purge-existing="false"
+      max-file-age="60"
+      max-file-count="100"
+      waveform-folder=""
+   />
+
+   <!-- Synthesis Details Record (SDR) Manager
+   Attributes:
+   *  save-records
+      This parameter specifies whether to save synthesis details records or not.
+   *  purge-existing
+      This parameter specifies whether to delete existing records on start-up.
+   *  max-file-age
+      This parameter specifies a time interval in minutes after expiration of which a record is deleted. Set 0 for infinite.
+   *  max-file-count
+      This parameter specifies the max number of records to store. If reached, the oldest record is deleted. Set 0 for infinite.
+   *  record-folder
+      This parameter specifies a folder to store synthesis details records in. Defaults to ${UniMRCPInstallDir}/var.
+   Elements:
+   *  none
+   -->
+   <sdr-manager
+      save-records="false"
+      purge-existing="false"
+      max-file-age="60"
+      max-file-count="100"
+      record-folder=""
+   />
+
+   <!-- Monitoring Agent
+   Attributes:
+   *  refresh-period
+      This parameter specifies a time interval in seconds used to periodically refresh usage details. See <usage-refresh-handler>.
+   Elements:
+   *  usage-change-handler
+   *  usage-refresh-handler
+   -->
+   <monitoring-agent refresh-period="60">
+      <!-- Handler of usage change event
+      Attributes:
+      *  none
+      Elements:
+      *  log-usage
+      *  update-usage
+      *  dump-channels
+      -->
+      <usage-change-handler>
+         <log-usage enable="true" priority="NOTICE"/>
+         <update-usage enable="false" status-file="umspolly-usage.status"/>
+         <dump-channels enable="false" status-file="umspolly-channels.status"/>
+      </usage-change-handler>
+
+      <!-- Handler of usage refresh timeout
+      Attributes:
+      *  none
+      Elements:
+      *  log-usage
+      *  update-usage
+      *  dump-channels
+      -->
+      <usage-refresh-handler>
+         <log-usage enable="false" priority="NOTICE"/>
+         <update-usage enable="false" status-file="umspolly-usage.status"/>
+         <dump-channels enable="false" status-file="umspolly-channels.status"/>
+      </usage-refresh-handler >
+   </monitoring-agent>
+
+</umspolly>
